@@ -8,32 +8,6 @@ A stunning, modern portfolio website built with Next.js 16, featuring advanced a
 ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-11.11-ff0055)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178c6)
 
-## ✨ Features
-
-### 🎯 Core Features
-- 🎭 **Advanced Animations** - Smooth, professional animations with Framer Motion
-- 🎨 **Minimal Design** - Clean black & white color palette
-- 📱 **Fully Responsive** - Mobile-first design approach
-- ⚡ **Fast Performance** - Optimized with Next.js 16
-- 🎯 **SEO Ready** - Complete metadata and Open Graph tags
-- ♿ **Accessible** - WCAG compliant design
-
-### 🚀 Advanced Features
-- 🖱️ **Custom Cursor** - Magnetic cursor with smooth physics
-- 📊 **Progress Indicators** - Scroll progress and loading animations
-- 🎪 **Magnetic Buttons** - Interactive buttons with magnetic effect
-- 🎬 **Reveal Text** - Word-by-word text reveal animations
-- 📽️ **Project Modal** - Detailed project showcase with modal
-- 🎢 **Parallax Scrolling** - Smooth parallax text effects
-- 🎨 **Animated Background** - Dynamic gradient orbs
-- 📍 **Section Indicators** - Visual navigation dots
-
-### ⚙️ Configuration
-- 📝 **Centralized Config** - Single `settings.json` for all data
-- 🔄 **Easy Updates** - Update once, apply everywhere
-- 🎛️ **No Code Changes** - Just edit JSON file
-- 📊 **Type Safe** - Full TypeScript support
-
 ## 🛠️ Technologies
 
 - **Framework**: [Next.js 16](https://nextjs.org/)
