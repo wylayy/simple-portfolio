@@ -3,15 +3,15 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
+const sections = [
+  { id: 'hero', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'contact', label: 'Contact' },
+];
+
 export default function SectionIndicator() {
   const [activeSection, setActiveSection] = useState(0);
-
-  const sections = [
-    { id: 'hero', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {

@@ -3,6 +3,7 @@
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import settings from '@/settings.json';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,8 +43,6 @@ export default function Navbar() {
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const settings = require('@/settings.json');
   
   const navItems = [
     { name: 'About', href: '#about', id: 'about' },

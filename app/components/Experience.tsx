@@ -3,13 +3,25 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import settings from '@/settings.json';
+
+interface Experience {
+  title: string;
+  company: string;
+  location: string;
+  startDate: string;
+  endDate?: string | null;
+  current?: boolean;
+  description: string;
+  achievements?: string[];
+  technologies?: string[];
+}
 
 export default function Experience() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const settings = require('@/settings.json');
-  const experiences = settings.experience;
+  const experiences: Experience[] = settings.experience;
 
   return (
     <section className="py-24 px-6 md:px-12">
@@ -25,9 +37,9 @@ export default function Experience() {
         </motion.div>
 
         <div className="space-y-8">
-          {experiences.map((exp: any, index: number) => (
+          {experiences.map((exp, index: number) => (
             <motion.div
-              key={exp.id}
+              key={index}
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: index * 0.2, duration: 0.6 }}

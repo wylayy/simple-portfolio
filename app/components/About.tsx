@@ -2,23 +2,34 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Code2, Palette, Zap } from 'lucide-react';
+import { Code2, Palette, Zap, LucideIcon } from 'lucide-react';
 import RevealText from './RevealText';
+import settings from '@/settings.json';
+
+interface Service {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface SkillWithIcon {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
 
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const settings = require('@/settings.json');
   
   // Map icon names to actual icon components
-  const iconMap: any = {
+  const iconMap: Record<string, LucideIcon> = {
     Code2: Code2,
     Palette: Palette,
     Zap: Zap
   };
 
-  const skills = settings.services.map((service: any) => ({
+  const skills: SkillWithIcon[] = settings.services.map((service: Service) => ({
     icon: iconMap[service.icon] || Code2,
     title: service.title,
     description: service.description
@@ -70,7 +81,7 @@ export default function About() {
         >
           <motion.div variants={itemVariants}>
             <p className="text-lg md:text-xl text-muted leading-relaxed mb-6">
-              I'm a passionate developer who loves turning ideas into reality through code. 
+              I&apos;m a passionate developer who loves turning ideas into reality through code. 
               With a keen eye for design and a strong technical foundation, I create 
               experiences that are both beautiful and functional.
             </p>
@@ -81,7 +92,7 @@ export default function About() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="space-y-6">
-            {skills.map((skill: any, index: number) => (
+            {skills.map((skill, index: number) => (
               <motion.div
                 key={skill.title}
                 initial={{ opacity: 0, x: 50 }}

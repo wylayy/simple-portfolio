@@ -3,13 +3,23 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { GraduationCap, Calendar, MapPin } from 'lucide-react';
+import settings from '@/settings.json';
+
+interface Education {
+  degree: string;
+  institution: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  description?: string;
+  achievements?: string[];
+}
 
 export default function Education() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const settings = require('@/settings.json');
-  const education = settings.education;
+  const education: Education[] = settings.education;
 
   return (
     <section className="py-24 px-6 md:px-12 bg-muted/5">
@@ -25,9 +35,9 @@ export default function Education() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {education.map((edu: any, index: number) => (
+          {education.map((edu, index: number) => (
             <motion.div
-              key={edu.id}
+              key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.2, duration: 0.6 }}

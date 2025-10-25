@@ -1,20 +1,29 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import settings from '@/settings.json';
+
+interface Testimonial {
+  name: string;
+  role: string;
+  company?: string;
+  avatar: string;
+  content: string;
+  rating?: number;
+}
 
 export default function Testimonials() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const settings = require('@/settings.json');
-  const testimonials = settings.testimonials;
+  const testimonials: Testimonial[] = settings.testimonials;
 
-  const next = () => {
+  const next = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
+  }, [testimonials.length]);
 
   const prev = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
@@ -23,7 +32,7 @@ export default function Testimonials() {
   useEffect(() => {
     const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [next]);
 
   return (
     <section className="py-24 px-6 md:px-12">
@@ -56,14 +65,14 @@ export default function Testimonials() {
               className="relative z-10"
             >
               <p className="text-lg md:text-xl text-muted mb-8 leading-relaxed">
-                "{testimonials[currentIndex].content}"
+                &quot;{testimonials[currentIndex].content}&quot;
               </p>
               
               {/* Rating Stars */}
               {testimonials[currentIndex].rating && (
                 <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_: any, i: number) => (
-                    <span key={i} className={i < testimonials[currentIndex].rating ? 'text-accent' : 'text-muted/30'}>
+                  {[...Array(5)].map((_, i: number) => (
+                    <span key={i} className={i < (testimonials[currentIndex].rating ?? 0) ? 'text-accent' : 'text-muted/30'}>
                       ★
                     </span>
                   ))}
@@ -95,7 +104,7 @@ export default function Testimonials() {
             </button>
             
             <div className="flex items-center gap-2">
-              {testimonials.map((_: any, index: number) => (
+              {testimonials.map((_, index: number) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}

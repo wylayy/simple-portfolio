@@ -4,12 +4,11 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Mail, Github, Linkedin, Twitter, Phone, MapPin, Clock, Zap } from 'lucide-react';
 import ContactForm from './ContactForm';
+import settings from '@/settings.json';
 
 export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const settings = require('@/settings.json');
   
   const socials = [
     { icon: Github, label: "GitHub", link: settings.social.github },
@@ -59,7 +58,7 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <p className="text-xl md:text-2xl text-muted leading-relaxed mb-8">
-              I'm always interested in hearing about new projects and opportunities. 
+              I&apos;m always interested in hearing about new projects and opportunities. 
               Whether you have a question or just want to say hi, feel free to reach out.
             </p>
 

@@ -3,13 +3,21 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Award, ExternalLink } from 'lucide-react';
+import settings from '@/settings.json';
+
+interface Certification {
+  name: string;
+  issuer: string;
+  date: string;
+  credentialId?: string;
+  url?: string;
+}
 
 export default function Certifications() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const settings = require('@/settings.json');
-  const certifications = settings.certifications;
+  const certifications: Certification[] = settings.certifications;
 
   return (
     <section className="py-24 px-6 md:px-12">
@@ -25,9 +33,9 @@ export default function Certifications() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certifications.map((cert: any, index: number) => (
+          {certifications.map((cert, index: number) => (
             <motion.div
-              key={cert.id}
+              key={index}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: index * 0.1, duration: 0.6 }}

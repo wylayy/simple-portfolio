@@ -4,10 +4,22 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Github } from 'lucide-react';
 import { useEffect } from 'react';
 
+interface Project {
+  title: string;
+  description: string;
+  longDescription?: string;
+  tech: string[];
+  link: string;
+  github: string;
+  featured?: boolean;
+  features?: string[];
+  metrics?: Record<string, string | number>;
+}
+
 interface ProjectModalProps {
   isOpen: boolean;
   onClose: () => void;
-  project: any;
+  project: Project | null;
 }
 
 export default function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {

@@ -4,16 +4,28 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 import ProjectModal from './ProjectModal';
+import settings from '@/settings.json';
+
+interface Project {
+  title: string;
+  description: string;
+  longDescription?: string;
+  tech: string[];
+  link: string;
+  github: string;
+  featured?: boolean;
+  features?: string[];
+  metrics?: Record<string, string | number>;
+}
 
 export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const settings = require('@/settings.json');
   // Filter featured projects or show all
-  const projects = settings.projects.filter((p: any) => p.featured !== false);
+  const projects: Project[] = settings.projects.filter((p) => p.featured !== false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -56,7 +68,7 @@ export default function Projects() {
           animate={isInView ? "visible" : "hidden"}
           className="grid md:grid-cols-2 gap-8"
         >
-          {projects.map((project: any, index: number) => (
+          {projects.map((project) => (
             <motion.div
               key={project.title}
               variants={itemVariants}

@@ -3,13 +3,18 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import RevealText from './RevealText';
+import settings from '@/settings.json';
+
+interface Skill {
+  name: string;
+  level: number;
+}
 
 export default function Skills() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const settings = require('@/settings.json');
-  const skills = settings.skills;
+  const skills: Skill[] = settings.skills;
 
   return (
     <section className="py-24 px-6 md:px-12">
@@ -28,7 +33,7 @@ export default function Skills() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {skills.map((skill: any, index: number) => (
+          {skills.map((skill, index: number) => (
             <motion.div
               key={skill.name}
               initial={{ opacity: 0, x: -20 }}

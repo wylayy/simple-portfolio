@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import settings from '@/settings.json';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,9 +12,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-// Load settings
-const settings = require('@/settings.json');
 
 export const metadata: Metadata = {
   title: `${settings.personal.name} - ${settings.personal.title}`,

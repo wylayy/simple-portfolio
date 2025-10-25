@@ -2,19 +2,33 @@
 
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
 import { useRef, useEffect } from 'react';
+import settings from '@/settings.json';
+
+interface Stat {
+  label: string;
+  value: number;
+  suffix?: string;
+}
+
+interface StatItemProps {
+  value: number;
+  label: string;
+  suffix?: string;
+  delay: number;
+  isInView: boolean;
+}
 
 export default function StatsCounter() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const settings = require('@/settings.json');
-  const stats = settings.stats;
+  const stats: Stat[] = settings.stats;
 
   return (
     <section className="py-24 px-6 md:px-12 bg-muted/5">
       <div className="max-w-7xl mx-auto" ref={ref}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat: any, index: number) => (
+          {stats.map((stat, index: number) => (
             <StatItem
               key={stat.label}
               value={stat.value}
@@ -30,7 +44,7 @@ export default function StatsCounter() {
   );
 }
 
-function StatItem({ value, label, suffix = '', delay, isInView }: any) {
+function StatItem({ value, label, suffix = '', delay, isInView }: StatItemProps) {
   const count = useMotionValue(0);
   const rounded = useSpring(count, { damping: 50, stiffness: 100 });
 

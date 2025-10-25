@@ -2,15 +2,26 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import settings from '@/settings.json';
 
 export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const [mounted, setMounted] = useState(false);
+  
+  // Generate random values once during initialization
+  const [particles] = useState(() => 
+    Array.from({ length: 20 }, (_, i) => ({
+      id: i,
+      randomX: Math.random() * 100,
+      randomY: Math.random() * 100,
+      randomDelay: Math.random() * 2,
+      randomDuration: 2 + Math.random() * 2,
+      randomXOffset: (Math.random() - 0.5) * 100,
+      randomYOffset: (Math.random() - 0.5) * 100,
+    }))
+  );
 
   useEffect(() => {
-    setMounted(true);
-    
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -31,10 +42,7 @@ export default function LoadingScreen() {
     };
   }, []);
 
-  const settings = require('@/settings.json');
   const letters = settings.personal.name.toUpperCase().split("");
-
-  if (!mounted) return null;
 
   return (
     <AnimatePresence>
@@ -132,35 +140,28 @@ export default function LoadingScreen() {
           </div>
 
           {/* Animated Particles */}
-          {[...Array(20)].map((_, i) => {
-            const randomX = Math.random() * 100;
-            const randomY = Math.random() * 100;
-            const randomDelay = Math.random() * 2;
-            const randomDuration = 2 + Math.random() * 2;
-
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{
-                  opacity: [0, 1, 0],
-                  scale: [0, 1, 0],
-                  x: [0, (Math.random() - 0.5) * 100],
-                  y: [0, (Math.random() - 0.5) * 100],
-                }}
-                transition={{
-                  duration: randomDuration,
-                  repeat: Infinity,
-                  delay: randomDelay,
-                }}
-                className="absolute w-1 h-1 bg-accent rounded-full"
-                style={{
-                  left: `${randomX}%`,
-                  top: `${randomY}%`,
-                }}
-              />
-            );
-          })}
+          {particles.map((particle) => (
+            <motion.div
+              key={particle.id}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{
+                opacity: [0, 1, 0],
+                scale: [0, 1, 0],
+                x: [0, particle.randomXOffset],
+                y: [0, particle.randomYOffset],
+              }}
+              transition={{
+                duration: particle.randomDuration,
+                repeat: Infinity,
+                delay: particle.randomDelay,
+              }}
+              className="absolute w-1 h-1 bg-accent rounded-full"
+              style={{
+                left: `${particle.randomX}%`,
+                top: `${particle.randomY}%`,
+              }}
+            />
+          ))}
         </motion.div>
       )}
     </AnimatePresence>

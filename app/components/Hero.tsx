@@ -5,6 +5,7 @@ import { ArrowDown } from 'lucide-react';
 import AvailabilityStatus from './AvailabilityStatus';
 import DownloadCV from './DownloadCV';
 import MagneticButton from './MagneticButton';
+import settings from '@/settings.json';
 
 export default function Hero() {
   const textVariants = {
@@ -33,7 +34,6 @@ export default function Hero() {
     }),
   };
 
-  const settings = require('@/settings.json');
   const { name, title, tagline, description } = settings.personal;
 
   return (

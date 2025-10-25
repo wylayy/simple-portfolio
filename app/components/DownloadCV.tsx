@@ -2,9 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { Download } from 'lucide-react';
+import settings from '@/settings.json';
 
 export default function DownloadCV() {
-  const settings = require('@/settings.json');
   
   const handleDownload = () => {
     const cvUrl = settings.files.cv;

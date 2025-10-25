@@ -2,9 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Twitter, Mail, ArrowUp } from 'lucide-react';
+import settings from '@/settings.json';
 
 export default function Footer() {
-  const settings = require('@/settings.json');
   
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
