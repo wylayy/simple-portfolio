@@ -133,7 +133,6 @@ All portfolio content is centralized in one file! Just edit `settings.json`:
 9. **Services** - Services you offer
 10. **Stats** - Statistics counters
 11. **SEO** - Meta tags and descriptions
-12. **Theme** - Colors and styling
 
 ### 🎨 Customize Colors
 
