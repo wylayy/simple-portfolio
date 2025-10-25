@@ -34,26 +34,24 @@ A stunning, modern portfolio website built with Next.js 16, featuring advanced a
 - 🎛️ **No Code Changes** - Just edit JSON file
 - 📊 **Type Safe** - Full TypeScript support
 
-## 🚀 Quick Start
+## 🛠️ Technologies
 
-### Installation
+- **Framework**: [Next.js 16](https://nextjs.org/)
+- **Styling**: [TailwindCSS 4](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Font**: [Geist](https://vercel.com/font)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
 
-```bash
-# Install dependencies
-npm install
+## 🚀 Deployment
 
-# Run development server
-npm run dev
-```
+### Deploy to Vercel (Recommended)
 
-Open [http://localhost:3000](http://localhost:3000) to view your portfolio.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 
-### Build for Production
-
-```bash
-npm run build
-npm start
-```
+1. Push code to GitHub
+2. Import project to Vercel
+3. Deploy automatically
 
 ## 📁 Project Structure
 
@@ -107,14 +105,6 @@ settings.json               # 🎯 Centralized configuration
 ├── features                # Feature flags
 ├── integrations            # Third-party integrations
 └── files                   # File paths (CV, images)
-
-Documentation/
-├── CONFIG_GUIDE.md         # Configuration guide
-├── SETTINGS_INTEGRATION.md # Settings implementation
-├── DATA_USAGE.md           # Data usage documentation
-├── FULL_IMPLEMENTATION.md  # Complete implementation guide
-├── UNUSED_FILES.md         # Optional components guide
-└── CUSTOMIZATION.md        # Customization guide
 ```
 
 ## 🎯 Customization
@@ -183,94 +173,12 @@ Edit `app/globals.css`:
 }
 ```
 
-📖 **For detailed guides:**
-- [CONFIG_GUIDE.md](./CONFIG_GUIDE.md) - Complete configuration guide
-- [SETTINGS_INTEGRATION.md](./SETTINGS_INTEGRATION.md) - How settings work
-- [DATA_USAGE.md](./DATA_USAGE.md) - Data usage documentation
-
-## 🎨 Portfolio Sections
-
-1. **Hero** - Animated landing with magnetic CTA buttons
-2. **Parallax Text** - Scrolling text with parallax effect
-3. **About** - Personal introduction with service cards
-4. **Skills** - Technical skills with animated progress bars
-5. **Stats Counter** - Animated statistics showcase
-6. **Experience** - Work history timeline with achievements
-7. **Education** - Academic background with details
-8. **Certifications** - Professional certifications grid
-9. **Parallax Text** - Another parallax section
-10. **Projects** - Portfolio showcase with modal details
-11. **Testimonials** - Client reviews carousel with ratings
-12. **Contact** - Contact form and social links
-13. **Footer** - Site navigation and copyright
-
-### 🎭 Interactive Elements
-
-- **Loading Screen** - Animated name reveal on page load
-- **Custom Cursor** - Magnetic cursor for desktop
-- **Scroll Progress** - Top progress bar
-- **Section Indicators** - Side navigation dots
-- **Animated Background** - Dynamic gradient orbs
-- **Magnetic Buttons** - Interactive hover effects
-- **Project Modal** - Detailed project information
-- **Reveal Text** - Word-by-word animations
-
-## 🛠️ Technologies
-
-- **Framework**: [Next.js 16](https://nextjs.org/)
-- **Styling**: [TailwindCSS 4](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Font**: [Geist](https://vercel.com/font)
-- **Language**: TypeScript
-
-## 📱 Responsive Breakpoints
-
-- **Mobile**: < 640px
-- **Tablet**: 640px - 1024px
-- **Desktop**: > 1024px
-
-## 🚀 Deployment
-
-### Deploy to Vercel (Recommended)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
-
-1. Push code to GitHub
-2. Import project to Vercel
-3. Deploy automatically
-
-### Deploy to Netlify
-
-1. Build the project: `npm run build`
-2. Deploy the `.next` folder
-3. Configure build settings
-
 ## 📊 Performance
 
 - ✅ Lighthouse Score: 95+
 - ✅ First Contentful Paint: < 1.5s
 - ✅ Time to Interactive: < 3s
 - ✅ Cumulative Layout Shift: < 0.1
-
-## 📚 Documentation
-
-### Configuration Guides
-- 📘 [CONFIG_GUIDE.md](./CONFIG_GUIDE.md) - Complete configuration guide
-- 📗 [SETTINGS_INTEGRATION.md](./SETTINGS_INTEGRATION.md) - Settings implementation
-- 📙 [DATA_USAGE.md](./DATA_USAGE.md) - Data usage documentation
-- 📕 [FULL_IMPLEMENTATION.md](./FULL_IMPLEMENTATION.md) - 100% implementation guide
-
-### Additional Resources
-- 📓 [UNUSED_FILES.md](./UNUSED_FILES.md) - Optional components guide
-- 📔 [CUSTOMIZATION.md](./CUSTOMIZATION.md) - Customization tips
-- 📖 [RESTORATION_COMPLETE.md](./RESTORATION_COMPLETE.md) - File restoration log
-
-### Quick Links
-- ⚙️ **Edit Portfolio**: `settings.json`
-- 🎨 **Edit Colors**: `app/globals.css`
-- 📄 **Edit Layout**: `app/layout.tsx`
-- 🏠 **Edit Page**: `app/page.tsx`
 
 ## 🤝 Contributing
 
