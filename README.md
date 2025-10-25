@@ -1,4 +1,4 @@
-# 🎨 Modern Portfolio Website
+# Simple Portfolio Website
 
 A stunning, modern portfolio website built with Next.js 16, featuring advanced animations, centralized configuration, and a minimal design aesthetic.
 
