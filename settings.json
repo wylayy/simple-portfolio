@@ -1,0 +1,357 @@
+{
+  "personal": {
+    "name": "Your Name",
+    "title": "Creative Developer",
+    "email": "your.email@example.com",
+    "phone": "+1234567890",
+    "location": "Your City, Country",
+    "tagline": "Crafting digital experiences with precision and creativity",
+    "description": "Specializing in modern web development and interactive design.",
+    "availability": {
+      "status": true,
+      "message": "Available for freelance work"
+    }
+  },
+  "social": {
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourusername",
+    "twitter": "https://twitter.com/yourusername",
+    "instagram": "https://instagram.com/yourusername",
+    "dribbble": "https://dribbble.com/yourusername",
+    "behance": "https://behance.net/yourusername"
+  },
+  "seo": {
+    "siteUrl": "https://yourwebsite.com",
+    "siteName": "Your Name Portfolio",
+    "siteDescription": "Modern portfolio showcasing creative development and design work. Specializing in React, Next.js, and interactive web experiences.",
+    "keywords": [
+      "web developer",
+      "portfolio",
+      "react",
+      "next.js",
+      "ui/ux",
+      "frontend developer",
+      "full stack developer",
+      "javascript",
+      "typescript"
+    ],
+    "ogImage": "/og-image.jpg",
+    "twitterHandle": "@yourusername",
+    "googleAnalyticsId": "G-XXXXXXXXXX",
+    "googleSiteVerification": "your-verification-code"
+  },
+  "skills": [
+    {
+      "name": "React / Next.js",
+      "level": 90,
+      "category": "Frontend"
+    },
+    {
+      "name": "TypeScript",
+      "level": 85,
+      "category": "Language"
+    },
+    {
+      "name": "TailwindCSS",
+      "level": 95,
+      "category": "Styling"
+    },
+    {
+      "name": "Node.js",
+      "level": 80,
+      "category": "Backend"
+    },
+    {
+      "name": "UI/UX Design",
+      "level": 85,
+      "category": "Design"
+    },
+    {
+      "name": "Framer Motion",
+      "level": 90,
+      "category": "Animation"
+    }
+  ],
+  "projects": [
+    {
+      "id": "project-1",
+      "title": "Project Alpha",
+      "description": "A modern web application built with Next.js and TypeScript, featuring real-time data synchronization and advanced animations.",
+      "longDescription": "Detailed description of the project, challenges faced, and solutions implemented. Include the impact and results achieved.",
+      "image": "/projects/project-1.jpg",
+      "tech": ["Next.js", "TypeScript", "Framer Motion", "TailwindCSS"],
+      "link": "https://project-alpha.com",
+      "github": "https://github.com/yourusername/project-alpha",
+      "featured": true,
+      "category": "Web Development",
+      "features": [
+        "Real-time data synchronization",
+        "Advanced animations with Framer Motion",
+        "Responsive design",
+        "SEO optimized"
+      ],
+      "metrics": {
+        "performance": "95+ Lighthouse score",
+        "users": "10,000+ monthly active users",
+        "impact": "Increased engagement by 40%"
+      }
+    },
+    {
+      "id": "project-2",
+      "title": "Project Beta",
+      "description": "E-commerce platform with seamless checkout experience and dynamic product filtering system.",
+      "longDescription": "Built a full-featured e-commerce platform with advanced filtering, cart management, and payment integration.",
+      "image": "/projects/project-2.jpg",
+      "tech": ["React", "Node.js", "MongoDB", "Stripe"],
+      "link": "https://project-beta.com",
+      "github": "https://github.com/yourusername/project-beta",
+      "featured": true,
+      "category": "E-commerce",
+      "features": [
+        "Seamless checkout process",
+        "Dynamic product filtering",
+        "Payment integration with Stripe",
+        "Admin dashboard"
+      ]
+    },
+    {
+      "id": "project-3",
+      "title": "Project Gamma",
+      "description": "Interactive data visualization dashboard with real-time analytics and customizable widgets.",
+      "longDescription": "Created an interactive dashboard for data visualization with real-time updates and customizable components.",
+      "image": "/projects/project-3.jpg",
+      "tech": ["React", "D3.js", "TailwindCSS", "WebSocket"],
+      "link": "https://project-gamma.com",
+      "github": "https://github.com/yourusername/project-gamma",
+      "featured": false,
+      "category": "Data Visualization",
+      "features": [
+        "Real-time data updates",
+        "Interactive charts with D3.js",
+        "Customizable widgets",
+        "Export functionality"
+      ]
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "testimonial-1",
+      "name": "John Doe",
+      "role": "CEO, Tech Company",
+      "company": "Tech Corp",
+      "avatar": "JD",
+      "image": "/testimonials/john-doe.jpg",
+      "content": "Outstanding work! The attention to detail and creativity exceeded our expectations. Highly recommended for any web development project.",
+      "rating": 5,
+      "project": "Project Alpha"
+    },
+    {
+      "id": "testimonial-2",
+      "name": "Jane Smith",
+      "role": "Product Manager",
+      "company": "Innovation Labs",
+      "avatar": "JS",
+      "image": "/testimonials/jane-smith.jpg",
+      "content": "Professional, efficient, and incredibly talented. Delivered a stunning website that perfectly captured our brand vision.",
+      "rating": 5,
+      "project": "Project Beta"
+    },
+    {
+      "id": "testimonial-3",
+      "name": "Mike Johnson",
+      "role": "Startup Founder",
+      "company": "StartupXYZ",
+      "avatar": "MJ",
+      "image": "/testimonials/mike-johnson.jpg",
+      "content": "Transformed our ideas into a beautiful, functional website. The animations and user experience are top-notch!",
+      "rating": 5,
+      "project": "Project Gamma"
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp-1",
+      "title": "Senior Frontend Developer",
+      "company": "Tech Company",
+      "location": "Remote",
+      "startDate": "2022-01",
+      "endDate": null,
+      "current": true,
+      "description": "Leading frontend development for multiple high-traffic web applications.",
+      "achievements": [
+        "Improved performance by 40%",
+        "Led team of 5 developers",
+        "Implemented design system"
+      ],
+      "technologies": ["React", "Next.js", "TypeScript", "TailwindCSS"]
+    },
+    {
+      "id": "exp-2",
+      "title": "Frontend Developer",
+      "company": "Digital Agency",
+      "location": "City, Country",
+      "startDate": "2020-06",
+      "endDate": "2021-12",
+      "current": false,
+      "description": "Developed responsive websites and web applications for various clients.",
+      "achievements": [
+        "Delivered 20+ projects",
+        "Maintained 95+ client satisfaction",
+        "Mentored junior developers"
+      ],
+      "technologies": ["React", "Vue.js", "JavaScript", "SCSS"]
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-1",
+      "degree": "Bachelor of Computer Science",
+      "institution": "University Name",
+      "location": "City, Country",
+      "startDate": "2016-09",
+      "endDate": "2020-06",
+      "description": "Focused on web development and software engineering.",
+      "achievements": [
+        "GPA: 3.8/4.0",
+        "Dean's List",
+        "Best Capstone Project Award"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "id": "cert-1",
+      "name": "AWS Certified Developer",
+      "issuer": "Amazon Web Services",
+      "date": "2023-06",
+      "credentialId": "ABC123XYZ",
+      "url": "https://aws.amazon.com/certification/"
+    },
+    {
+      "id": "cert-2",
+      "name": "Meta Front-End Developer",
+      "issuer": "Meta",
+      "date": "2022-12",
+      "credentialId": "DEF456UVW",
+      "url": "https://www.coursera.org/professional-certificates/meta-front-end-developer"
+    }
+  ],
+  "services": [
+    {
+      "id": "service-1",
+      "title": "Web Development",
+      "description": "Building modern, responsive websites and web applications using the latest technologies.",
+      "icon": "Code2",
+      "features": [
+        "Custom web applications",
+        "E-commerce solutions",
+        "Progressive Web Apps",
+        "API integration"
+      ]
+    },
+    {
+      "id": "service-2",
+      "title": "UI/UX Design",
+      "description": "Creating intuitive and beautiful user interfaces that users love.",
+      "icon": "Palette",
+      "features": [
+        "User interface design",
+        "User experience optimization",
+        "Prototyping",
+        "Design systems"
+      ]
+    },
+    {
+      "id": "service-3",
+      "title": "Performance Optimization",
+      "description": "Optimizing websites for speed and efficiency without compromising quality.",
+      "icon": "Zap",
+      "features": [
+        "Speed optimization",
+        "SEO improvement",
+        "Code refactoring",
+        "Performance audits"
+      ]
+    }
+  ],
+  "stats": [
+    {
+      "value": 50,
+      "label": "Projects Completed",
+      "suffix": "+"
+    },
+    {
+      "value": 30,
+      "label": "Happy Clients",
+      "suffix": "+"
+    },
+    {
+      "value": 5,
+      "label": "Years Experience",
+      "suffix": "+"
+    },
+    {
+      "value": 100,
+      "label": "Client Satisfaction",
+      "suffix": "%"
+    }
+  ],
+  "contact": {
+    "email": "your.email@example.com",
+    "phone": "+1234567890",
+    "location": "Your City, Country",
+    "availability": "Monday - Friday, 9AM - 6PM (Your Timezone)",
+    "responseTime": "Within 24 hours"
+  },
+  "theme": {
+    "colors": {
+      "background": "#0a0a0a",
+      "foreground": "#f5f5f5",
+      "accent": "#ffffff",
+      "muted": "#6b7280"
+    },
+    "fonts": {
+      "sans": "Geist Sans",
+      "mono": "Geist Mono"
+    }
+  },
+  "features": {
+    "loadingScreen": true,
+    "customCursor": true,
+    "scrollProgress": true,
+    "sectionIndicator": true,
+    "parallaxText": true,
+    "animatedBackground": true,
+    "themeToggle": false,
+    "contactForm": true,
+    "downloadCV": true,
+    "availabilityStatus": true
+  },
+  "integrations": {
+    "emailService": {
+      "provider": "emailjs",
+      "serviceId": "your_service_id",
+      "templateId": "your_template_id",
+      "publicKey": "your_public_key"
+    },
+    "analytics": {
+      "googleAnalytics": {
+        "enabled": false,
+        "measurementId": "G-XXXXXXXXXX"
+      },
+      "vercelAnalytics": {
+        "enabled": false
+      }
+    },
+    "sentry": {
+      "enabled": false,
+      "dsn": "your_sentry_dsn"
+    }
+  },
+  "files": {
+    "cv": "/cv.pdf",
+    "ogImage": "/og-image.jpg",
+    "favicon": "/favicon.ico",
+    "logo": "/logo.svg"
+  }
+}
