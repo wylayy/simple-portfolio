@@ -199,4 +199,4 @@ This project is open source and available under the MIT License.
 
 **Made with ❤️ using Next.js**
 
-For questions or support, check the documentation files or open an issue.
+For questions or support, open an issue.
