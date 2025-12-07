@@ -1,175 +1,113 @@
 # Simple Portfolio Website
 
-A stunning, modern portfolio website built with Next.js 16, featuring advanced animations, centralized configuration, and a minimal design aesthetic.
+A stunning, modern portfolio website built with **Next.js 16**, featuring advanced animations, centralized configuration, and a minimal design aesthetic. Designed for developers who want a professional presence without the hassle.
 
-![Next.js](https://img.shields.io/badge/Next.js-16.0.0-black)
-![React](https://img.shields.io/badge/React-19.2.0-blue)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0-38bdf8)
-![Framer Motion](https://img.shields.io/badge/Framer%20Motion-11.11-ff0055)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178c6)
+![Next.js](https://img.shields.io/badge/Next.js-16.0.0-black?style=for-the-badge&logo=next.js)
+![React](https://img.shields.io/badge/React-19.0.0-blue?style=for-the-badge&logo=react)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0-38bdf8?style=for-the-badge&logo=tailwindcss)
+![Framer Motion](https://img.shields.io/badge/Framer%20Motion-11.11-ff0055?style=for-the-badge&logo=framer)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178c6?style=for-the-badge&logo=typescript)
 
-## 🛠️ Technologies
+## ✨ Key Features
 
-- **Framework**: [Next.js 16](https://nextjs.org/)
+- **🎨 Modern & Minimalist Design**: Clean aesthetics with a focus on typography and whitespace.
+- **⚙️ Centralized Configuration**: Manage all content (text, links, projects) from a single `settings.json` file.
+- **⚡ High Performance**: Optimized for speed with Next.js 16, achieving 95+ Lighthouse scores.
+- **🎬 Advanced Animations**: Smooth page transitions, scroll reveals, and interactive elements using Framer Motion.
+- **📱 Fully Responsive**: Looks perfect on all devices, from mobile phones to large desktops.
+- **🔍 SEO Optimized**: Built-in metadata management for better search engine visibility.
+- **🧩 Component-Based**: Modular architecture for easy maintenance and scalability.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [TailwindCSS 4](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Icons**: [Lucide React](https://lucide.dev/)
-- **Font**: [Geist](https://vercel.com/font)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Fonts**: [Geist](https://vercel.com/font)
 
 ## 🚀 Deployment
 
-### Deploy to Vercel (Recommended)
+The easiest way to deploy is using [Vercel](https://vercel.com).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+1. Push your code to a GitHub repository.
+2. Go to Vercel and "Add New Project".
+3. Import your repository.
+4. Click **Deploy**.
 
-1. Push code to GitHub
-2. Import project to Vercel
-3. Deploy automatically
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyourusername%2Fsimple-portfolio)
 
-## 📁 Project Structure
+## 🎯 Configuration
 
-```
-app/
-├── components/              # All React components (26 total)
-│   ├── Hero.tsx            # Landing section with animated name
-│   ├── About.tsx           # About section with services
-│   ├── Skills.tsx          # Skills with progress bars
-│   ├── Experience.tsx      # Work experience timeline
-│   ├── Education.tsx       # Education history
-│   ├── Certifications.tsx  # Certifications showcase
-│   ├── Projects.tsx        # Project showcase with modal
-│   ├── Testimonials.tsx    # Client reviews carousel
-│   ├── Contact.tsx         # Contact section with form
-│   ├── StatsCounter.tsx    # Animated statistics
-│   ├── Navbar.tsx          # Navigation bar
-│   ├── Footer.tsx          # Footer with links
-│   ├── LoadingScreen.tsx   # Animated loading screen
-│   ├── AnimatedBackground.tsx  # Dynamic background
-│   ├── CustomCursor.tsx    # Custom cursor effect
-│   ├── ScrollProgress.tsx  # Scroll progress bar
-│   ├── SectionIndicator.tsx    # Section navigation dots
-│   ├── ParallaxText.tsx    # Parallax scrolling text
-│   ├── MagneticButton.tsx  # Magnetic button effect
-│   ├── ProjectModal.tsx    # Project details modal
-│   ├── RevealText.tsx      # Text reveal animation
-│   ├── AvailabilityStatus.tsx  # Availability indicator
-│   ├── DownloadCV.tsx      # CV download button
-│   ├── ContactForm.tsx     # Contact form
-│   ├── PageTransition.tsx  # Page transitions
-│   └── ThemeToggle.tsx     # Theme toggle (optional)
-├── globals.css             # Global styles & theme
-├── layout.tsx              # Root layout with SEO metadata
-└── page.tsx                # Main portfolio page
+The entire content of the website is driven by the `settings.json` file. You don't need to touch the code to update your information!
 
-settings.json               # 🎯 Centralized configuration
-├── personal                # Personal info & availability
-├── social                  # Social media links
-├── seo                     # SEO metadata
-├── skills                  # Technical skills
-├── projects                # Portfolio projects
-├── testimonials            # Client testimonials
-├── experience              # Work experience
-├── education               # Education history
-├── certifications          # Certifications
-├── services                # Services offered
-├── stats                   # Statistics counters
-├── contact                 # Contact details
-├── theme                   # Theme colors
-├── features                # Feature flags
-├── integrations            # Third-party integrations
-└── files                   # File paths (CV, images)
-```
+### How to Edit Content
 
-## 🎯 Customization
-
-### ⚡ Quick Start - Edit `settings.json`
-
-All portfolio content is centralized in one file! Just edit `settings.json`:
+Open `settings.json` and modify the values:
 
 ```json
 {
   "personal": {
-    "name": "Your Name",              // ← Change this
-    "title": "Full Stack Developer",  // ← And this
-    "email": "your@email.com",
-    "tagline": "Your tagline here",
-    "description": "Your description"
+    "name": "Your Name",
+    "title": "Full Stack Developer",
+    "email": "hello@example.com",
+    // ...
   },
   "social": {
-    "github": "https://github.com/username",
-    "linkedin": "https://linkedin.com/in/username"
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourusername"
+    // ...
   },
-  "skills": [
-    {
-      "name": "React / Next.js",
-      "level": 90,
-      "category": "Frontend"
-    }
-  ],
   "projects": [
-    {
-      "title": "Your Project",
-      "description": "Project description",
-      "tech": ["React", "Next.js"],
-      "link": "https://...",
-      "github": "https://..."
-    }
+    // Add your projects here
   ]
-  // ... and more!
 }
 ```
 
-### 📝 What You Can Customize
+### Customizing Colors
 
-1. **Personal Info** - Name, title, email, phone, location
-2. **Social Links** - GitHub, LinkedIn, Twitter, etc.
-3. **Skills** - Technical skills with levels
-4. **Projects** - Portfolio projects with details
-5. **Experience** - Work history with achievements
-6. **Education** - Academic background
-7. **Certifications** - Professional certifications
-8. **Testimonials** - Client reviews
-9. **Services** - Services you offer
-10. **Stats** - Statistics counters
-11. **SEO** - Meta tags and descriptions
+To change the color theme, edit `app/globals.css`:
 
-### 🎨 Customize Colors
-
-Edit `app/globals.css`:
 ```css
 :root {
-  --background: #0a0a0a;  /* Dark background */
-  --foreground: #f5f5f5;  /* Light text */
-  --accent: #ffffff;      /* White accent */
-  --muted: #6b7280;       /* Gray muted */
+  --background: #0a0a0a;  /* Main background color */
+  --foreground: #f5f5f5;  /* Main text color */
+  --accent: #ffffff;      /* Accent color for highlights */
+  --muted: #6b7280;       /* Muted text color */
 }
 ```
 
-## 📊 Performance
+## 📁 Project Structure
 
-- ✅ Lighthouse Score: 95+
-- ✅ First Contentful Paint: < 1.5s
-- ✅ Time to Interactive: < 3s
-- ✅ Cumulative Layout Shift: < 0.1
+```
+simple-portfolio/
+├── app/
+│   ├── components/         # UI Components (Hero, About, Projects, etc.)
+│   ├── globals.css         # Global styles & theme variables
+│   ├── layout.tsx          # Root layout & SEO
+│   └── page.tsx            # Main entry point
+├── public/                 # Static assets (images, icons)
+├── settings.json           # ⚡ Main Configuration File
+├── next.config.ts          # Next.js config
+├── tailwind.config.ts      # Tailwind config
+└── tsconfig.json           # TypeScript config
+```
 
 ## 🤝 Contributing
 
-Feel free to fork this project and customize it for your own portfolio!
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## 📝 License
 
-This project is open source and available under the MIT License.
-
-## 🙏 Acknowledgments
-
-- Next.js team for the amazing framework
-- Framer Motion for smooth animations
-- TailwindCSS for utility-first CSS
-- Vercel for hosting and fonts
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-**Made with ❤️ using Next.js**
-
-For questions or support, open an issue.
+**Created with ❤️ by Waylay**
