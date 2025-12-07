@@ -37,7 +37,7 @@ export default function Hero() {
   const { name, title, tagline, description } = settings.personal;
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative px-6 md:px-12">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative px-6 md:px-12 overflow-hidden">
       <div className="max-w-7xl w-full">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -45,7 +45,7 @@ export default function Hero() {
           transition={{ duration: 1, ease: [0.6, -0.05, 0.01, 0.99] }}
           className="mb-8"
         >
-          <div className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none">
+          <div className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none max-w-full overflow-hidden">
             {name.split('').map((char: string, i: number) => (
               <motion.span
                 key={i}

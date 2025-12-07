@@ -2,166 +2,96 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import settings from '@/settings.json';
 
 export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  
-  // Generate random values once during initialization
-  const [particles] = useState(() => 
-    Array.from({ length: 20 }, (_, i) => ({
-      id: i,
-      randomX: Math.random() * 100,
-      randomY: Math.random() * 100,
-      randomDelay: Math.random() * 2,
-      randomDuration: 2 + Math.random() * 2,
-      randomXOffset: (Math.random() - 0.5) * 100,
-      randomYOffset: (Math.random() - 0.5) * 100,
-    }))
-  );
 
   useEffect(() => {
-    const progressInterval = setInterval(() => {
+    const timer = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
-          clearInterval(progressInterval);
+          clearInterval(timer);
           return 100;
         }
-        return prev + 2;
+        const diff = 100 - prev;
+        const inc = Math.ceil(diff * 0.1) + Math.floor(Math.random() * 3);
+        return Math.min(prev + inc, 100);
       });
-    }, 30);
+    }, 100);
 
-    const timer = setTimeout(() => {
+    const timeout = setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
+    }, 2200);
 
     return () => {
-      clearInterval(progressInterval);
-      clearTimeout(timer);
+      clearInterval(timer);
+      clearTimeout(timeout);
     };
   }, []);
 
-  const letters = settings.personal.name.toUpperCase().split("");
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
+  }, [isLoading]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {isLoading && (
         <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[100] bg-background flex items-center justify-center"
+          className="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center"
+          exit={{ 
+            y: "-100vh", 
+            transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } 
+          }}
         >
-          {/* Geometric Shapes */}
-          <motion.div
-            initial={{ scale: 0, rotate: 0 }}
-            animate={{ scale: 1, rotate: 45 }}
-            transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99], delay: 0.1 }}
-            className="absolute top-8 left-8 w-16 h-16 border-t-2 border-l-2 border-accent"
-          />
-          <motion.div
-            initial={{ scale: 0, rotate: 0 }}
-            animate={{ scale: 1, rotate: -45 }}
-            transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99], delay: 0.2 }}
-            className="absolute top-8 right-8 w-16 h-16 border-t-2 border-r-2 border-accent"
-          />
-          <motion.div
-            initial={{ scale: 0, rotate: 0 }}
-            animate={{ scale: 1, rotate: -45 }}
-            transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99], delay: 0.3 }}
-            className="absolute bottom-8 left-8 w-16 h-16 border-b-2 border-l-2 border-accent"
-          />
-          <motion.div
-            initial={{ scale: 0, rotate: 0 }}
-            animate={{ scale: 1, rotate: 90 }}
-            transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99], delay: 0.3 }}
-            className="absolute bottom-8 right-8 w-16 h-16 border-b-2 border-r-2 border-accent"
-          />
-
-          {/* Main Content */}
-          <div className="relative z-10 text-center px-6">
-            {/* Animated Letters */}
-            <div className="flex justify-center mb-8 overflow-hidden">
-              {letters.map((letter: string, index: number) => (
-                <motion.span
-                  key={index}
-                  initial={{ y: 100, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.05,
-                    ease: [0.6, -0.05, 0.01, 0.99],
-                  }}
-                  className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold inline-block"
-                >
-                  {letter === ' ' ? '\u00A0' : letter}
-                </motion.span>
-              ))}
-            </div>
-
-            {/* Progress Bar */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="w-64 mx-auto"
+          <div className="relative overflow-hidden">
+            <motion.div 
+              className="flex items-start"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <div className="h-1 bg-muted/20 overflow-hidden mb-4">
-                <motion.div
-                  initial={{ width: "0%" }}
-                  animate={{ width: `${Math.min(progress, 100)}%` }}
-                  transition={{ duration: 0.3 }}
-                  className="h-full bg-accent relative"
-                >
-                  {/* Glowing Effect */}
-                  <motion.div
-                    animate={{
-                      opacity: [0.5, 1, 0.5],
-                    }}
-                    transition={{
-                      duration: 1,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="absolute inset-0 bg-accent blur-sm"
-                  />
-                </motion.div>
-              </div>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                className="text-sm text-muted"
-              >
-                Loading... {Math.round(progress)}%
-              </motion.p>
+              <span className="text-[15vw] md:text-[12vw] font-bold text-accent leading-none tracking-tighter">
+                {progress}
+              </span>
+              <span className="text-2xl md:text-4xl font-light text-muted mt-4 md:mt-8 ml-2">
+                %
+              </span>
             </motion.div>
           </div>
+          
+          <motion.div 
+            className="absolute bottom-8 left-8 md:bottom-12 md:left-12 flex items-center gap-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+            <span className="text-sm md:text-base text-muted uppercase tracking-widest">
+              Loading Experience
+            </span>
+          </motion.div>
 
-          {/* Animated Particles */}
-          {particles.map((particle) => (
-            <motion.div
-              key={particle.id}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{
-                opacity: [0, 1, 0],
-                scale: [0, 1, 0],
-                x: [0, particle.randomXOffset],
-                y: [0, particle.randomYOffset],
-              }}
-              transition={{
-                duration: particle.randomDuration,
-                repeat: Infinity,
-                delay: particle.randomDelay,
-              }}
-              className="absolute w-1 h-1 bg-accent rounded-full"
-              style={{
-                left: `${particle.randomX}%`,
-                top: `${particle.randomY}%`,
-              }}
+          {/* Progress Line */}
+          <div className="absolute bottom-0 left-0 w-full h-1 bg-muted/10">
+            <motion.div 
+              className="h-full bg-accent"
+              initial={{ width: 0 }}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.1, ease: "linear" }}
             />
-          ))}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
