@@ -1,8 +1,8 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useEffect, useCallback } from 'react';
-import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRef } from 'react';
+import { Quote, Star } from 'lucide-react';
 import settings from '@/settings.json';
 
 interface Testimonial {
@@ -17,113 +17,111 @@ interface Testimonial {
 export default function Testimonials() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [currentIndex, setCurrentIndex] = useState(0);
-
   const testimonials: Testimonial[] = settings.testimonials;
 
-  const next = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  }, [testimonials.length]);
-
-  const prev = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
   };
 
-  useEffect(() => {
-    const timer = setInterval(next, 5000);
-    return () => clearInterval(timer);
-  }, [next]);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
 
   return (
-    <section className="py-24 px-6 md:px-12">
-      <div className="max-w-5xl mx-auto" ref={ref}>
+    <section className="py-32 relative overflow-hidden" ref={ref}>
+      {/* Background Decoration */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">What Clients Say</h2>
-          <div className="w-20 h-1 bg-accent mx-auto"></div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+            Client <span className="text-accent">Stories</span>
+          </h2>
+          <p className="text-muted max-w-2xl mx-auto text-lg">
+            Don't just take my word for it. Here's what people I've worked with have to say about the experience.
+          </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
         >
-          <div className="border border-muted p-8 md:p-12 relative">
-            <Quote className="w-12 h-12 text-accent/20 absolute top-4 left-4" />
-            
+          {testimonials.map((testimonial, index) => (
             <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="relative z-10"
+              key={index}
+              variants={itemVariants}
+              className="group relative p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-accent/30 transition-colors duration-300"
             >
-              <p className="text-lg md:text-xl text-muted mb-8 leading-relaxed">
-                &quot;{testimonials[currentIndex].content}&quot;
-              </p>
-              
-              {/* Rating Stars */}
-              {testimonials[currentIndex].rating && (
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i: number) => (
-                    <span key={i} className={i < (testimonials[currentIndex].rating ?? 0) ? 'text-accent' : 'text-muted/30'}>
-                      ★
-                    </span>
+              {/* Quote Icon */}
+              <div className="absolute top-8 right-8 text-accent/20 group-hover:text-accent/40 transition-colors duration-300">
+                <Quote size={40} strokeWidth={1.5} />
+              </div>
+
+              {/* Content */}
+              <div className="flex flex-col h-full">
+                {/* Rating */}
+                <div className="flex gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      size={16}
+                      className={`${
+                        i < (testimonial.rating || 5)
+                          ? "fill-accent text-accent"
+                          : "fill-muted/20 text-muted/20"
+                      }`}
+                    />
                   ))}
                 </div>
-              )}
-              
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-accent text-background rounded-full flex items-center justify-center font-bold">
-                  {testimonials[currentIndex].avatar}
-                </div>
-                <div>
-                  <div className="font-semibold">{testimonials[currentIndex].name}</div>
-                  <div className="text-sm text-muted">
-                    {testimonials[currentIndex].role}
-                    {testimonials[currentIndex].company && ` • ${testimonials[currentIndex].company}`}
+
+                <p className="text-muted text-lg leading-relaxed mb-8 flex-grow">
+                  "{testimonial.content}"
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center text-accent font-bold text-lg border border-accent/20">
+                    {testimonial.avatar}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-foreground">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-sm text-muted">
+                      {testimonial.role}
+                      {testimonial.company && (
+                        <span className="opacity-70"> @ {testimonial.company}</span>
+                      )}
+                    </p>
                   </div>
                 </div>
               </div>
             </motion.div>
-          </div>
-
-          <div className="flex justify-center gap-4 mt-8">
-            <button
-              onClick={prev}
-              className="p-3 border border-muted hover:border-accent hover:bg-accent hover:text-background transition-all duration-300"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            
-            <div className="flex items-center gap-2">
-              {testimonials.map((_, index: number) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? 'bg-accent w-8' : 'bg-muted'
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={next}
-              className="p-3 border border-muted hover:border-accent hover:bg-accent hover:text-background transition-all duration-300"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+          ))}
         </motion.div>
       </div>
     </section>
